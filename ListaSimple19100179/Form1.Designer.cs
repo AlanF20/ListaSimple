@@ -39,6 +39,7 @@
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.presea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.grpDeportista = new System.Windows.Forms.GroupBox();
             this.btnImagen = new System.Windows.Forms.Button();
@@ -58,7 +59,7 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnVaciar = new System.Windows.Forms.Button();
-            this.imagen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBuscar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dtgDeportistasOlimpicos)).BeginInit();
             this.grpDeportista.SuspendLayout();
             this.grpPresea.SuspendLayout();
@@ -67,7 +68,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(683, 140);
+            this.btnAgregar.Location = new System.Drawing.Point(683, 97);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(105, 37);
             this.btnAgregar.TabIndex = 0;
@@ -182,6 +183,12 @@
             this.presea.HeaderText = "Presea obtenida";
             this.presea.Name = "presea";
             this.presea.ReadOnly = true;
+            // 
+            // imagen
+            // 
+            this.imagen.HeaderText = "Imagen";
+            this.imagen.Name = "imagen";
+            this.imagen.ReadOnly = true;
             // 
             // dtpFechaNacimiento
             // 
@@ -373,17 +380,22 @@
             this.btnVaciar.UseVisualStyleBackColor = true;
             this.btnVaciar.Click += new System.EventHandler(this.btnVaciar_Click);
             // 
-            // imagen
+            // btnBuscar
             // 
-            this.imagen.HeaderText = "Imagen";
-            this.imagen.Name = "imagen";
-            this.imagen.ReadOnly = true;
+            this.btnBuscar.Location = new System.Drawing.Point(683, 140);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(105, 37);
+            this.btnBuscar.TabIndex = 9;
+            this.btnBuscar.Text = "Buscar ";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 550);
+            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnVaciar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnGenerar);
@@ -435,6 +447,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnVaciar;
         private System.Windows.Forms.DataGridViewTextBoxColumn imagen;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }
 

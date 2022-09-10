@@ -102,7 +102,7 @@ namespace ListaSimple19100179
                     DeportistaOlimpicoFamoso miDeportista = new DeportistaOlimpicoFamoso();
                     miDeportista.Clave = rand.Next();
                     miDeportista.Nombre = Guid.NewGuid().ToString().Substring(0, 16);
-                    miDeportista.FechaNacimiento = Convert.ToDateTime($"{rand.Next(1, 13)}/{rand.Next(1, 28)}/{rand.Next(1500, 5000)}");
+                    miDeportista.FechaNacimiento = Convert.ToDateTime($"{rand.Next(1, 13)}/{rand.Next(1, 13)}/{rand.Next(1500, 5000)}");
                     miDeportista.DineroGenerado = double.Parse((rand.NextDouble() * 30000).ToString("N2"));
                     miDeportista.Categoria = cboCategoria.Items[rand.Next(0, 19)].ToString();
                     if (rand.Next(0, 2) == 0)
@@ -190,6 +190,11 @@ namespace ListaSimple19100179
                 DialogResult decision = MessageBox.Show("Desea eliminar el dato seleccionado?", "Advertencia", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
                 if (decision == DialogResult.Yes)
                 {
+                    if (dtgDeportistasOlimpicos.CurrentRow == null)
+                    {
+                        MessageBox.Show("No hay datos en la lista para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
                     deportista.Clave = int.Parse(dtgDeportistasOlimpicos.CurrentRow.Cells[0].Value.ToString());
                     //deportista.Nombre = dtgDeportistasOlimpicos.CurrentRow.Cells[1].Value.ToString();
                     //deportista.FechaNacimiento = DateTime.Parse(dtgDeportistasOlimpicos.CurrentRow.Cells[2].Value.ToString());
@@ -210,7 +215,7 @@ namespace ListaSimple19100179
                     //}
                     dtgDeportistasOlimpicos.Rows.Clear();
                     deportista = miListaDeportista.EliminarNodo(deportista);
-                    MessageBox.Show($"Se elimino el deportista con los datos: \nNombre: {deportista.Nombre}\nCon clave de: {deportista.Clave}");
+                    MessageBox.Show($"Los datos del deportista que elimino solicito son:\nClave: {deportista.Clave}\nNombre: {deportista.Nombre}\nFecha de nacimiento: {deportista.FechaNacimiento}\nDinero generado: {deportista.DineroGenerado}\nCategoria: {deportista.Categoria}\nSigue activo?: {(deportista.Activo ? "Sigue activo" : "No sigue activo")}\nPresea: {deportista.Presea}", "Encontrado",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     foreach (DeportistaOlimpicoFamoso deportistaOlimpicoFamoso in miListaDeportista)
                     {
                         var activo = deportistaOlimpicoFamoso.Activo ? "Sigue activo" : "No esta activo";
@@ -265,6 +270,26 @@ namespace ListaSimple19100179
                 {
                     MessageBox.Show("Se cancelo la operacion de vaciar.", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dtgDeportistasOlimpicos.CurrentRow == null)
+                {
+                    MessageBox.Show("No hay datos en la fila para mostrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                DeportistaOlimpicoFamoso deportista = new DeportistaOlimpicoFamoso();
+                deportista.Clave = int.Parse(dtgDeportistasOlimpicos.CurrentRow.Cells[0].Value.ToString());
+                deportista = miListaDeportista.BuscarNodo(deportista);
+                MessageBox.Show($"Los datos del deportista que solicito son:\nClave: {deportista.Clave}\nNombre: {deportista.Nombre}\nFecha de nacimiento: {deportista.FechaNacimiento}\nDinero generado: {deportista.DineroGenerado}\nCategoria: {deportista.Categoria}\nSigue activo?: {(deportista.Activo ? "Sigue activo" : "No sigue activo")}\nPresea: {deportista.Presea}", "Encontrado",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             catch(Exception ex)
             {
