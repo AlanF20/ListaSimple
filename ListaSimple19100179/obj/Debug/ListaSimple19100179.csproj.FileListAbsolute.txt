@@ -1,0 +1,11 @@
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\bin\Debug\ListaSimple19100179.exe.config
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\bin\Debug\ListaSimple19100179.exe
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\bin\Debug\ListaSimple19100179.pdb
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\obj\Debug\ListaSimple19100179.csproj.AssemblyReference.cache
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\obj\Debug\ListaSimple19100179.csproj.SuggestedBindingRedirects.cache
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\obj\Debug\ListaSimple19100179.Form1.resources
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\obj\Debug\ListaSimple19100179.Properties.Resources.resources
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\obj\Debug\ListaSimple19100179.csproj.GenerateResource.cache
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\obj\Debug\ListaSimple19100179.csproj.CoreCompileInputs.cache
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\obj\Debug\ListaSimple19100179.exe
+C:\Users\AlanI\source\repos\ListaSimple19100179\ListaSimple19100179\obj\Debug\ListaSimple19100179.pdb
