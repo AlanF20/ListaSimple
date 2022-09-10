@@ -21,13 +21,11 @@ namespace ListaSimple19100179
 
         private void btnImagen_Click(object sender, EventArgs e)
         {
-            
             OpenFileDialog miArchivoFoto = new OpenFileDialog();
             miArchivoFoto.Title = "Seleccione la imagen que desea cargar";
             miArchivoFoto.Filter = "Archivos de imagen |*.png;*.jpg";
             miArchivoFoto.RestoreDirectory = false; 
             miArchivoFoto.InitialDirectory = Application.StartupPath + "\\Deportistas";
-            MessageBox.Show(Application.StartupPath + "\\Deportistas");
             if (miArchivoFoto.ShowDialog() == DialogResult.OK)
             {
                 picImagen.ImageLocation = miArchivoFoto.FileName;
@@ -57,7 +55,15 @@ namespace ListaSimple19100179
                 {
                     miDeportista.Presea = 'B';
                 }
-                miDeportista.Imagen = picImagen.ImageLocation;
+                if (picImagen.Image == null)
+                {
+                    MessageBox.Show("Debe de agregar una imagen para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                else
+                {
+                    miDeportista.Imagen = picImagen.ImageLocation;
+                }
                 miListaDeportista.AgregarNodo(miDeportista);
                 dtgDeportistasOlimpicos.Rows.Clear();
                 foreach (DeportistaOlimpicoFamoso deportistaOlimpicoFamoso in miListaDeportista)
@@ -154,6 +160,7 @@ namespace ListaSimple19100179
             if (dtgDeportistasOlimpicos.CurrentRow == null)
             {
                 MessageBox.Show("No hay datos en la fila para mostrar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             try
             {
@@ -215,7 +222,7 @@ namespace ListaSimple19100179
                     //}
                     dtgDeportistasOlimpicos.Rows.Clear();
                     deportista = miListaDeportista.EliminarNodo(deportista);
-                    MessageBox.Show($"Los datos del deportista que elimino solicito son:\nClave: {deportista.Clave}\nNombre: {deportista.Nombre}\nFecha de nacimiento: {deportista.FechaNacimiento}\nDinero generado: {deportista.DineroGenerado}\nCategoria: {deportista.Categoria}\nSigue activo?: {(deportista.Activo ? "Sigue activo" : "No sigue activo")}\nPresea: {deportista.Presea}", "Encontrado",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show($"Los datos del deportista que elimino fueron:\nClave: {deportista.Clave}\nNombre: {deportista.Nombre}\nFecha de nacimiento: {deportista.FechaNacimiento}\nDinero generado: {deportista.DineroGenerado}\nCategoria: {deportista.Categoria}\nSigue activo?: {(deportista.Activo ? "Sigue activo" : "No sigue activo")}\nPresea: {deportista.Presea}", "Encontrado",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     foreach (DeportistaOlimpicoFamoso deportistaOlimpicoFamoso in miListaDeportista)
                     {
                         var activo = deportistaOlimpicoFamoso.Activo ? "Sigue activo" : "No esta activo";
@@ -230,6 +237,7 @@ namespace ListaSimple19100179
                     }
                     cboCategoria.Text = "";
                     chkActivo.Checked = false;
+                    picImagen.Image = null;
                 }
                 else
                 {
@@ -265,6 +273,8 @@ namespace ListaSimple19100179
                     }
                     cboCategoria.Text = "";
                     chkActivo.Checked = false;
+                    picImagen.Image = null;
+                    picImagen.Image = null;
                 }
                 else
                 {
